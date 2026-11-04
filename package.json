@@ -1,0 +1,14 @@
+{
+  "name": "renovate-config",
+  "private": true,
+  "description": "Haven BX shared Renovate presets",
+  "engines": {
+    "node": "^24.11.0 || >=26"
+  },
+  "devDependencies": {
+    "renovate": "44.212.0"
+  },
+  "scripts": {
+    "validate": "renovate-config-validator --strict default.json apps.json renovate.json"
+  }
+}

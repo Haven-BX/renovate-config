@@ -1,0 +1,49 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Haven BX default preset for client Astro sites",
+  "extends": ["config:best-practices"],
+  "timezone": "Europe/Helsinki",
+  "schedule": ["on monday"],
+  "minimumReleaseAge": "14 days",
+  "internalChecksFilter": "strict",
+  "prConcurrentLimit": 3,
+  "rangeStrategy": "bump",
+  "platformAutomerge": false,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 7am on the first day of the month"],
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "description": "14-day wait for npm updates (overrides best-practices 3-day npm floor)",
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "14 days",
+      "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Patches, pins and digests merge themselves after CI passes",
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Astro and Cloudflare tooling move together (adds wrangler beside monorepo:astro)",
+      "matchPackageNames": ["astro", "@astrojs/**", "wrangler"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Astro and Cloudflare",
+      "automerge": true
+    },
+    {
+      "description": "Majors wait for a human on the Dependency Dashboard",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "dependencyDashboardApproval": true,
+      "labels": ["major", "needs-human"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "schedule": ["at any time"],
+    "minimumReleaseAge": "3 days",
+    "labels": ["security"]
+  }
+}
