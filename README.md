@@ -59,3 +59,7 @@ Overrides are rare. Prefer fixing the shared preset. If a site truly needs an ex
 npm ci --ignore-scripts
 npm run validate
 ```
+
+## CI note
+
+Haven-BX currently allows only **local** GitHub Actions. The `validate` workflow therefore uses `run:` steps (git fetch + pinned zizmor release binary) instead of marketplace actions. If org policy later allows selected/github-owned actions, switch back to SHA-pinned `actions/checkout`, `actions/setup-node`, and `zizmorcore/zizmor-action`.

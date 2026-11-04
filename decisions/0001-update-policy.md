@@ -30,3 +30,4 @@ Ship `default.json` for sites and `apps.json` for internal apps. Key rules and w
 - A mistake in this repo affects every consumer on the next Renovate run → CI validator, branch protection, and human review on `main`.
 - Dogfooding via this repo’s `renovate.json` only reflects the preset **after merge** to the default branch; it is not a PR test.
 - Security PRs require Dependabot **alerts** enabled on each consumer repo.
+- Haven-BX org Actions policy is currently `local_only`, so marketplace actions (`actions/checkout`, `zizmorcore/zizmor-action`, etc.) cannot run. CI uses `run:`-only checkout + pinned zizmor binary download until the org allows selected/github-owned actions; then prefer SHA-pinned `uses:`.
